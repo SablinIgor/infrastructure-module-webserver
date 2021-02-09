@@ -16,7 +16,7 @@ data "digitalocean_ssh_key" "terraform" {
 }
 
 resource "digitalocean_loadbalancer" "www-loadbalancer" {
-  name   = "www-loadbalancer"
+  name   = "${var.stand}-www-loadbalancer"
   region = "fra1"
 
   forwarding_rule {
@@ -38,7 +38,7 @@ resource "digitalocean_loadbalancer" "www-loadbalancer" {
 resource "digitalocean_droplet" "web" {
   count              = var.vm_count
   image              = var.image_name
-  name               = "www-${count.index}"
+  name               = "${var.stand}-www-${count.index}"
   region             = "fra1"
   size               = var.vm_size
   private_networking = true
