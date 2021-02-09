@@ -14,3 +14,5 @@ variable "vm_count" {
 }
 
 variable "pvt_key" {}
+
+variable "do_token" {}
